@@ -1,29 +1,37 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Character = require("./models/Characters.js");
-const characterRoutes = require("./routes/character.routes.js");
+const characterRoutes = require("./routes/character.routes");
+const connectDB = require("./config/connection");
+
 const app = express();
+const PORT = process.env.PORT || 3004;
 
+
+// Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
-app.use(express.urlencoded({ extended: false })); // allows to support other forms of sending info
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/characters", characterRoutes);
 
+app.use("/api/characters", characterRoutes)
+
+// Basic route for testing
 app.get("/", (req, res) => {
-  res.send("Hello From Node API !!");
+  res.send("Hello From Node API");
 });
 
+// Connect to MongoDB, define models, and start the server
 
 mongoose
   .connect(
     "mongodb+srv://vgarrido009:Ocv4RMfnqWhl9TQO@papermarionotes.jmlrwvi.mongodb.net/?retryWrites=true&w=majority&appName=PaperMarioNotes"
   )
   .then(() => {
-    console.log("Connected to the DB");
-    app.listen(3004, () => {
-      console.log("App listening on port 3004");
+    console.log("Connected to database!");
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
+    
   })
   .catch(() => {
-    console.log("Failed to connect");
+    console.log("Connection failed!");
   });

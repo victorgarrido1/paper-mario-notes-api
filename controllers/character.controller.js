@@ -42,18 +42,17 @@ const createCharacter = async (req, res) => {
 const updateCharacter = async (req, res) => {
   try {
     const { id } = req.params;
-    const character = await Character.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
+
+    const character = await Character.findByIdAndUpdate(id, req.body);
 
     if (!character) {
-      return res.status(404).json({ error: "Character not found" });
+      return res.status(404).json({ message: "Character is not found" });
     }
 
-    res.status(200).json(character);
-  } catch (err) {
-    console.error("Error updating character:", err);
-    res.status(500).json({ error: "Internal Server Error" });
+    const updatedCharacter = await Character.findById(id);
+    res.status(200).json(updatedCharacter);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 

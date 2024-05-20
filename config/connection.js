@@ -7,11 +7,13 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
 });
 
 async function connectDB() {
   try {
+    console.log("Attempting to connect to MongoDB...");
     // Connect the client to the server (optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
@@ -24,4 +26,11 @@ async function connectDB() {
   }
 }
 
-module.exports = connectDB;
+module.exports = async function () {
+  try {
+    return await connectDB();
+  } catch (error) {
+    console.error("Failed to connect to MongoDB", error);
+    process.exit(1); // Exit the process with an error code
+  }
+};
