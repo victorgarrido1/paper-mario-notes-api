@@ -24,9 +24,10 @@ After installing the NPM packages, the application will be invoked by using the 
 
 ## Placeholder Screenshot 
 
-XXX
+<img width="1260" alt="postman_sc" src="https://github.com/victorgarrido1/paper-mario-notes-api/assets/139294878/34db841a-44cc-4ddd-8b5a-2da6bf39b8cf">
 
-### Placeholder Video
+## Video
+https://drive.google.com/file/d/1iW1yvCl4BdUqxOZp4jSZlc_pmRtBuZrh/view?usp=drive_link
 
 ## Contribution
 
