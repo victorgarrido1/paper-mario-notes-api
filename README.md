@@ -1,9 +1,9 @@
-# paper-mario-notes-api
+# Paper-Mario-Notes-Api
 
 
 ## Description  
 
-This is a simple API that allows you to query for characters from the Paper Mario Series. As the game has a long time fandom. It would be great to be able to access data from characters from the video game and be able to query character infomation and other relating details about the characters in the game.
+This is a simple API that allows you to query for characters from the Paper Mario Series. As the game has a long time fandom. It would be great to be able to access data from characters from the video game and be able to query character if information and other relating details about the characters in the game.
 
 
 ## Technologies:
